@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+          'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+          'Helvetica Neue', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        margin: 0;
+        color: #ebf0f2;
+        background-color: #232730;
+      }
+
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #ebf0f2;
+        border-radius: 10px;
+      }
+
+      .main {
+        width: 100%;
+        height: fit-content;
+        max-width: 60rem;
+        margin: 2rem auto 8rem auto;
+      }
+
+      .center {
+        text-align: center;
+      }
+
+      .graph {
+        margin: 2rem auto 2rem auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <h1 class="center">Employment vs COVID</h1>
+      <b>Authors:</b>
+      <br />
+      Sivert Johansen
+      <br />
+      David Kristoffersen
+      <br />
+      Markus Bergum Hilbertsen
+
+      <h2>Overview and Motivation</h2>
+      In late 2019 and early 2020 the Corona virus, originating from China,
+      spread across the world. This lead to a global pandemic, where, in order
+      to combat the spread of the virus, many nations enforced nation wide
+      lockdowns. Following these lockdowns, media reported an increase in
+      unemployment. This report will investigate these claims, and try to figure
+      out if there is a correlation between the Corona virus and unemployment.
+      <br />
+      <br />
+      We chose to focus on this because the pandemic is still on-going, and
+      therefore very relevant. I addition, we think that it might show a variety
+      of interesting results.
+
+      <h2>Related Work</h2>
+      The interest for this topic came from the fact that Corona is still
+      on-going, and we were interested in doing our own research regarding the
+      effects of the virus on a nation wide scale. We chose unemployment because
+      it is has been in focul by the media. Additionally, data regarding this
+      topic should be abundant.
+
+      <h2>Initial Questions</h2>
+      The questions this report will try to answer are: is there a real
+      correlation between the Corona outbreak and unemployment rate, and if so,
+      to what extent. Currently, as of writing this report there have been two
+      major waves of Corona. The first occured in late February/early March of
+      2020. The second, and most recent wave, occured just after the summer of
+      2020.
+
+      <h2>Data</h2>
+      Since we have a variety of categories, we have used a number of different
+      data sources.
+
+      <h3>Unemployment rate Norway</h3>
+      The data for unemployment rate in Norway is scraped from nav
+
+      <h3>Unemployment rate USA</h3>
+      <h3>Covid cases</h3>
+
+      <h2>Exploratory Analysis</h2>
+      What visualizations did you use to look at your data in different ways?
+      What are the different statistical methods you considered? Justify the
+      decisions you made, and show any major changes to your ideas. How did you
+      reach these conclusions?
+
+      <div class="graph">
+        <div class="plot" src="plots/unemployment.html"></div>
+      </div>
+      <div class="graph">
+        <div class="plot" src="plots/covid_norway.html"></div>
+      </div>
+      <div class="graph">
+        <div class="plot" src="plots/covid_usa.html"></div>
+      </div>
+
+      <h2>Final Analysis</h2>
+      Based on the data there appears to be a correlation between the number of
+      Corona cases, or more specifically lockdowns, and unemployment. In March
+      2020, both countries employed nation wide lockdowns, and the unemployment
+      data clearly reflects this. Both countries have a sudden increase in
+      unemployment around this time. Interestingly, the second wave does not
+      seem to have affected the unemployment rate. This is likely because a
+      second lockdown - at least at the time of writing - have not been enforced
+      (yet). We suspect that if a second lockdown were to happen this would
+      affect the data, hovewer not as extreme as the first.
+    </div>
+  </body>
+</html>
