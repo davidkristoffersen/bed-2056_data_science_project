@@ -12,6 +12,7 @@
         margin: 0;
         color: #ebf0f2;
         background-color: #232730;
+        font-size: 20px;
       }
 
       ::-webkit-scrollbar {
@@ -21,6 +22,10 @@
       ::-webkit-scrollbar-thumb {
         background: #ebf0f2;
         border-radius: 10px;
+      }
+
+      a {
+        color: #ebf0f2;
       }
 
       .main {
@@ -83,16 +88,60 @@
       data sources.
 
       <h3>Unemployment rate Norway</h3>
-      The data for unemployment rate in Norway is scraped from nav
+      The data for unemployment rate in Norway is retrieved from Nav. Nav offers
+      many great data sets, which can be found here:
+      <a
+        href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/"
+      >
+        nav.no
+      </a>
+      <br />
+      <br />
+      The specific data set we used for unemployment was:
+      <a
+        href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/hovedtall-om-arbeidsmarkedet/_/attachment/download/b4c655bf-de5c-4714-bf30-9d4d979fa45b:7e53be0947a6afdab3df01a0523a574d3e174277/HL100_Antall_helt_ledige_historisk._November_2020.xlsx"
+      >
+        Nav unemployment
+      </a>
+      <br />
+      <br />
+      To scrape the excel file, we used the python library pandas
+      <a href="https://pandas.pydata.org/">pandas.pydata.org</a>
+      , which support reading excel formatted files.
 
       <h3>Unemployment rate USA</h3>
+      The unempoyment rate data for USA comes from the U.S Bureau of Labor
+      Statistics
+      <a href="https://www.bls.gov">bls.gov</a>
+      . To retrieve the data, we do a post request to their api
+      <a href="https://api.bls.gov/publicAPI">api.bls.gov</a>
+      , where we pass some parameters which specify what data we want. The
+      result comes in JSON format, and we use the json python module to iterate
+      and parse the data.
+
       <h3>Covid cases</h3>
+      The data for the number of daily Covid cases is fetched from the European
+      Centre for Disease Prevention and Control
+      <a href="https://www.ecdc.europa.eu/en">ecdc.europa.eu</a>
+      . They supply a variety of data sets involving Covid, amongst other
+      things. The data we use can be found here
+      <a
+        href="https://opendata.ecdc.europa.eu/covid19/casedistribution/csv/data.csv"
+      >
+        ecdc Covid
+      </a>
+      . The data is in CSV format, so we can parse the data by separating the
+      lines, and then separating the rows by comma to extract the values we are
+      interested in.
 
       <h2>Exploratory Analysis</h2>
-      What visualizations did you use to look at your data in different ways?
-      What are the different statistical methods you considered? Justify the
-      decisions you made, and show any major changes to your ideas. How did you
-      reach these conclusions?
+      All the plots were made using python and plotly
+      <a href="https://plotly.com/python/">plotly.com</a>
+      . Plotly is a library that lets you create interactive plots and graphs.
+      You can interact with the plots by hovering over data points to see
+      specific data point values, zoom in on specific parts of the graph by
+      selecting/dragging the mouse over a part of the graph, and use the varying
+      tools in the toolbar.
 
       <div class="graph">
         <div class="plot" src="plots/unemployment.html"></div>

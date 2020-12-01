@@ -1,87 +1,99 @@
-import json
-import requests
 import plotly.graph_objects as go
 from bs4 import BeautifulSoup
 from usa import get_usa
 from norway import get_norway
+from covid import get_covid
 
 
-fg = "#ebf0f2"
-
-num_to_month = {
-    1: "Jan",
-    2: "Feb",
-    3: "Mar",
-    4: "Apr",
-    5: "May",
-    6: "Jun",
-    7: "Jul",
-    8: "Aug",
-    9: "Sep",
-    10: "Oct",
-    11: "Nov",
-    12: "Dec",
-}
-
+# A general layout used to configure the plots
 layout = go.Layout(paper_bgcolor="rgb(0,0,0,0)",
                    plot_bgcolor="rgb(0,0,0,0)",
-                   font_color=fg)
-
-
-def _plot_unemployment(fig, data, name):
-    x, y = [], []
-    for row in reversed(data):
-        x.append(f"{num_to_month[row[1]]} {row[0]}")
-        y.append(row[2])
-
-    fig.add_trace(go.Scatter(x=x, y=y, mode="lines+markers", name=name))
+                   font_color="#ebf0f2")
 
 
 def plot_unemployment():
+    """
+        Plots the unemployment rate of Norway and USA.
+        The result is an html file with the plot.
+    """
+
+    # Create the plot
     fig = go.Figure(layout=layout)
-    _plot_unemployment(fig, get_norway(), "Norway")
-    _plot_unemployment(fig, get_usa(), "USA")
+
+    # Plot the data from Norway
+    x, y = get_norway()
+    fig.add_trace(go.Scatter(x=x, y=y, mode="lines+markers", name="Norway"))
+
+    # Plot the data from USA
+    x, y = get_usa()
+    fig.add_trace(go.Scatter(x=x, y=y, mode="lines+markers", name="USA"))
+
+    # Add a vertical line that represents when the lockdown started
+    fig.add_vline(x="Mar 2020", line_color="#00cc96")
+    fig.add_annotation(x="Mar 2020", yref="y domain", y=1.1, text="Lockdown", showarrow=False)
+
+    # Customize the grid colors
     fig.update_xaxes(gridcolor="#a9a9a9")
     fig.update_yaxes(gridcolor="#a9a9a9")
+
+    # Add titles for plot and axis
     fig.update_layout(title="Unemployment rate in Norway and USA", xaxis_title="Month", yaxis_title="Rate")
+
+    # Create the finished html file
     fig.write_html("plots/unemployment.html")
 
 
+def _plot_covid(x, y, country, lockdown, color1, color2):
+    """
+        Helper function for plot_covid.
+        Creates the plots for the given data, and saves it as an html file.
+    """
+
+    # Create the plot
+    fig = go.Figure(layout=layout)
+
+    # Plot the given data
+    fig.add_trace(go.Bar(x=x, y=y, marker_color=color1))
+
+    # Add a vertical line representing the lockdown
+    fig.add_vline(x=lockdown, line_color=color2)
+    fig.add_annotation(x=lockdown, yref="y domain", y=1.1, text="Lockdown", showarrow=False)
+
+
+    # Add titles for plot and axis
+    fig.update_layout(title="Confirmed COVID cases in " + country, xaxis_title="Day", yaxis_title="# Cases")
+
+    # Create the finished html file
+    fig.write_html("plots/covid_" + country.lower() + ".html")
+
+
 def plot_covid():
-    res = requests.get("https://opendata.ecdc.europa.eu/covid19/casedistribution/csv/data.csv")
+    """
+        Plots the number of Covid cases per day for Norway and USA.
+    """
 
-    x1, y1 = [], []
-    x2, y2 = [], []
-    for line in reversed(res.text.split("\n")):
-        if "Norway" in line:
-            row = line.split(",")
-            x1.append(f"{row[1]} {num_to_month[int(row[2])]} {row[3]}")
-            y1.append(int(row[4]))
-        elif "USA" in line:
-            row = line.split(",")
-            x2.append(f"{row[1]} {num_to_month[int(row[2])]} {row[3]}")
-            y2.append(int(row[4]))
-
-    fig = go.Figure(layout=layout)
-    fig.add_trace(go.Bar(x=x1, y=y1))
-    fig.update_layout(title="Confirmed COVID cases in Norway", xaxis_title="Day", yaxis_title="# Cases")
-    fig.write_html("plots/covid_norway.html")
-
-    fig = go.Figure(layout=layout)
-    fig.add_trace(go.Bar(x=x2, y=y2, marker_color="red"))
-    fig.update_layout(title="Confirmed COVID cases in USA", xaxis_title="Day", yaxis_title="# Cases")
-    fig.write_html("plots/covid_usa.html")
+    norway, usa = get_covid()
+    _plot_covid(norway[0], norway[1], "Norway", "12 Mar 2020", "#636efa", "#ef553b")
+    _plot_covid(usa[0], usa[1], "USA", "22 Mar 2020", "#ef553b", "#636efa")
 
 
 def update_template():
+    """
+        Combines template.html with the plots.
+        The resulting file (document.html) is the finished report.
+    """
+
+    # Open, and read, the template file
     with open("template.html", "r") as f:
         soup = BeautifulSoup(f.read(), features="html5lib")
 
+    # Add the plots in the correct places
     for div in soup.find_all("div", class_="plot"):
         with open(div["src"], "r") as f:
             plot = BeautifulSoup(f.read(), features="html5lib")
             div.replace_with(plot.html.body.div)
 
+    # Write the finished report to document.html
     with open("document.html", "w") as f:
         f.write(soup.prettify())
 

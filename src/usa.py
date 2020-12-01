@@ -1,17 +1,26 @@
-import requests
 import json
-from pprint import pprint
+import requests
+
 
 def get_usa():
-    headers = {'Content-type': 'application/json'}
-    data = json.dumps({"seriesid": ['LNS14000000'], "startyear": "2015", "endyear": "2020"})
-    p = requests.post('https://api.bls.gov/publicAPI/v2/timeseries/data/', data=data, headers=headers)
-    json_data = json.loads(p.text)
+    """
+        Reads the unemployment data from U.S. Bureau of Labour Statistics, and parses it into a better format.
+    """
 
-    out = []
-    for series in json_data['Results']['series']:
-        for item in series['data']:
-            out.append([int(item['year']), int(item['period'][1:]), float(item['value'])])
+    # Get the data from U.S. Bureau of Labour Statistics
+    response = requests.post('https://api.bls.gov/publicAPI/v2/timeseries/data/',
+                             json={"seriesid": ['LNS14000000'], "startyear": "2015", "endyear": "2020"},
+                             headers={'Content-type': 'application/json'})
 
-    return out
+    # Parse the result into a json object
+    json_data = json.loads(response.text)
+
+    x, y = [], []
+    # Go through the data and add the date and value
+    # The list is reversed because we want to go from 2015 -> 2020
+    for item in reversed(json_data['Results']['series'][0]['data']):
+        x.append(f"{item['periodName'][:3]} {item['year']}")
+        y.append(float(item['value']))
+
+    return x, y
 
