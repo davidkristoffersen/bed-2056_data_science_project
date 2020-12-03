@@ -56,48 +56,47 @@
       Markus Bergum Hilbertsen
 
       <h2>Overview and Motivation</h2>
-      In late 2019 and early 2020 the Corona virus, originating from China,
-      spread across the world. This lead to a global pandemic, where, in order
-      to combat the spread of the virus, many nations enforced nation wide
-      lockdowns. Following these lockdowns, media across the world reported an
-      increase in unemployment. This report will investigate these claims, and
-      try to figure out if there is a correlation between the Corona virus and
+      In late 2019 and early 2020, the Coronavirus, originating from China,
+      spread worldwide. Many nations enforced nationwide lockdowns in an attempt
+      to combat the pandemic. Following these lockdowns, media across the world
+      reported an increase in unemployment. This report will investigate these
+      claims and figure out if there is a correlation between Coronavirus and
       unemployment. For simplicity's sake, we will focus on data from Norway and
-      USA. We believe the majority of countries will have similar patterns.
+      the USA. We believe the majority of countries will have similar patterns.
       <br />
       <br />
       We chose to focus on this topic because the pandemic is still on-going,
-      and therefore very relevant. In addition, we think it might show a variety
-      of interesting results.
+      and therefore very relevant. Also, we think it might show a variety
+      of fascinating results.
 
       <h2>Related Work</h2>
-      The interest for this topic came from the fact that Covid-19 is still
-      on-going, and we were interested in doing our own research regarding the
-      effects of the virus on a nation wide scale. We chose unemployment because
+      The interest in this topic came from the fact that Covid-19 is still
+      on-going, and we were interested in doing our research regarding the
+      effects of the virus on a nationwide scale. We chose unemployment because
       it is has been in focus by the media. Additionally, data regarding this
       topic should be abundant.
 
       <h2>Initial Questions</h2>
-      The questions this report will try to answer are: is there a real
-      correlation between the Corona virus and unemployment rate, and if so, to
-      what extent. Currently, as of writing this report there have been two
-      waves of Covid-19 in Noway, and three in USA. The first wave, for both
-      countries, occured in late February/early March 2020. America's second
-      outbreak occured in the summer, and Norway's second and America's third
-      started in October, and is still going on.
+      This report analyses a possible correlation between Coronavirus and the
+      unemployment rate, and if so, to what extent. Currently, as of writing
+      this report, there have been two waves of Covid-19 in Noway and three
+      in the USA. The first wave, for both countries, occurred in late
+      February/early March 2020. America's second outbreak occurred in
+      the summer, and Norway's second and America's third started in October
+      and is still going on.
 
       <h2>Data</h2>
       Since we have a variety of categories, we have used several sources that
       we will present below.
 
       <h3>Unemployment rate Norway</h3>
-      The data for unemployment rate in Norway is retrieved from Nav. Nav offers
-      many great data sets, which can be found here:
+      The data for the unemployment rate in Norway is retrieved from Nav.
+      Nav offers many great data sets, which can be found here:
       <a
         href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/"
       >
         nav.no
-      </a>
+      </a>.
       <br />
       <br />
       The specific data set we used for unemployment was:
@@ -105,89 +104,88 @@
         href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/hovedtall-om-arbeidsmarkedet/_/attachment/download/b4c655bf-de5c-4714-bf30-9d4d979fa45b:7e53be0947a6afdab3df01a0523a574d3e174277/HL100_Antall_helt_ledige_historisk._November_2020.xlsx"
       >
         Nav unemployment
-      </a>
+      </a>.
       <br />
       <br />
-      The data set comes in excel format, to scrape it we used the python
+      The data set comes in excel format. To scrape it, we used the python
       library pandas:
-      <a href="https://pandas.pydata.org/">pandas.pydata.org</a>
-      , which support reading excel formatted files.
+      <a href="https://pandas.pydata.org/">pandas.pydata.org</a>,
+      which supports reading excel formatted files.
 
       <h3>Unemployment rate USA</h3>
-      The unempoyment rate data for USA comes from the U.S Bureau of Labor
-      Statistics:
-      <a href="https://www.bls.gov">bls.gov</a>
-      . To retrieve the data, we do a post request to their api:
-      <a href="https://api.bls.gov/publicAPI">api.bls.gov</a>
-      , where we pass some parameters which specify what data we want. The
-      result comes in JSON format, and we use the json python module to iterate
-      and parse the data.
+      The unemployment rate data for the USA comes from the U.S Bureau of
+      Labor Statistics:
+      <a href="https://www.bls.gov">bls.gov</a>.
+      To retrieve the data, we do a post request to their API:
+      <a href="https://api.bls.gov/publicAPI">api.bls.gov</a>,
+      where we pass some parameters which specify what data we want. The result
+      comes in JSON format, and we use the JSON python module to iterate and
+      parse the data.
 
       <h3>Covid cases</h3>
       The data for the number of daily Covid cases is fetched from the European
       Centre for Disease Prevention and Control:
-      <a href="https://www.ecdc.europa.eu/en">ecdc.europa.eu</a>
-      . They supply a variety of data sets involving Covid, amongst other
-      things. The data we use can be found here:
+      <a href="https://www.ecdc.europa.eu/en">ecdc.europa.eu</a>.
+      They supply a variety of data sets involving Covid, amongst other things.
+      The data we use can be found here:
       <a
         href="https://opendata.ecdc.europa.eu/covid19/casedistribution/csv/data.csv"
       >
         ecdc Covid
-      </a>
-      . The data is in CSV format, and we can parse the data by separating the
-      lines, and then separating the rows by comma to extract the values we are
-      interested in.
+      </a>.
+      The data is in CSV format, and we can parse the data by separating the
+      lines and then separating the rows by commas to extract the relevant values.
 
       <h2>Exploratory Analysis</h2>
       All the plots were made using python and plotly:
-      <a href="https://plotly.com/python/">plotly.com</a>
-      . Plotly is a library that lets you create interactive plots and graphs.
-      You can interact with the plots by hovering over data points to see
-      specific data point values, and zoom in on specific parts of the graph by
-      selecting/dragging the mouse over a part of the graph. In each plot there
-      is also a toolbar with a variety of tools
+      <a href="https://plotly.com/python/">plotly.com</a>.
+      Plotly is a library for creating interactive plots and graphs. The plots
+      can be interacted with by hovering over data points to see specific data
+      point values and zoom in on specific parts of the graph by selecting/dragging
+      the mouse over the graph. In each plot, there is also a toolbar with a
+      variety of tools.
 
       <div class="graph">
         <div class="plot" src="plots/unemployment.html"></div>
       </div>
       <small class="center">
-        (Figure 1. Unemployment rate for Norway and USA)
+        (Figure 1. The unemployment rate for Norway and the USA)
       </small>
       <br />
       Following the unemployment rate from 2015, we can see that it is slowly
-      decreasing, until the lockdown events in March 2020.
+      decreasing until the lockdown events in March 2020.
 
       <div class="graph">
         <div class="plot" src="plots/covid_norway.html"></div>
       </div>
       <small class="center">(Figure 2. Confirmed Covid cases in Norway)</small>
       <br />
-      In Norway, we can see two main waves of Covid, with the second wave having
-      the highest amount of cases so far. As of writing this, the second wave is
-      still on-going, however it appears to be flattening out.
+      In Norway, we can see two significant waves of Covid, with the second wave
+      having the highest amount of cases so far. The second wave is still
+      on-going; however, it appears to be flattening out.
       <div class="graph">
         <div class="plot" src="plots/covid_usa.html"></div>
       </div>
-      <small class="center">(Figure 3. Confirmed Covid cases in USA)</small>
+      <small class="center">(Figure 3. Confirmed Covid cases in the USA)</small>
       <br />
-      In USA,
+      In the USA,
       <i>three</i>
-      main waves of Covid are identifiable, with the last having the highest
-      amount of cases. Comparing this plot to the plot from Norway, we can see
-      that Norway controlled the outbreak a lot better during the summer, barely
-      having any cases.
+      significant waves of Covid are identifiable, with the last having the
+      highest amount of cases. Comparing this plot to the plot from Norway, we
+      can see that Norway controlled the outbreak a lot better during the summer,
+      barely having any cases.
 
       <h2>Final Analysis</h2>
       Based on the data, there appears to be a correlation between the number of
-      Covid cases and unemployment rate. From the figures, we can see that as
-      soon as the number of Covid cases increased, and lockdowns were enforced,
+      Covid cases and the unemployment rate. From the figures, we can see that
+      as soon as the number of Covid cases increased and lockdowns were enforced,
       the unemployment rate also increased. For the Norwegian unemployment data
-      (figure 1), the plot might make it appear as though the unemployment rate
-      increased before the lockdown, however this is because both the lockdown
-      and the unemployment-peak were in the same month. In actuality, the
-      unemployment rate followed the lockdown. Interestingly, in the following
-      waves of Covid, no noticeable difference in unemployment was detected. We
-      suspect this is the case for two main reasons:
+      (figure 1), the plot illustrates an increase in the unemployment rate
+      before the lockdown. However, this is because both the lockdown and
+      unemployment-peak were in the same month. In actuality, the unemployment
+      rate followed the lockdown. Interestingly, in the next waves of Covid, no
+      noticeable difference in unemployment was detected. We suspect this is the
+      case for two main reasons:
 
       <ul>
         <li>
@@ -196,13 +194,26 @@
         </li>
         <li>
           No lockdowns have been enforced in the second (and third in the case
-          of USA) wave.
+          of the USA) wave.
         </li>
       </ul>
 
-      At the time of writing this, a second lockdown has not been enforced.
-      However, if a second lockdown were to be enforced, we would expect too see
-      an increase in unemployment again, although not as severe as the first.
+      At the time of writing, no second lockdown has been enforced. If a second
+      lockdown were to be enforced, we would expect to see an increase in
+      unemployment, again, but not as severe as the first.
+
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      Based on the data, there appears to be a correlation between the number of
+          Corona cases, more specifically lockdowns, and unemployment. In March 2020,
+          both countries employed nationwide lockdowns, and the unemployment data
+          reflects this. Both countries have a sudden increase in unemployment around
+          this time. The second wave has not(yet) resulted in a lockdown, and
+          interestingly the employment rate also was not affected. We suspect that
+          if a second lockdown were to happen, this would affect the data; however,
+          not as extreme as the first.
     </div>
   </body>
 </html>
