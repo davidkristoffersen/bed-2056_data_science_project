@@ -62,12 +62,12 @@
       reported an increase in unemployment. This report will investigate these
       claims and figure out if there is a correlation between Coronavirus and
       unemployment. For simplicity's sake, we will focus on data from Norway and
-      the USA. We believe the majority of countries will have similar patterns.
+      USA. We believe the majority of countries will have similar patterns.
       <br />
       <br />
       We chose to focus on this topic because the pandemic is still on-going,
-      and therefore very relevant. Also, we think it might show a variety
-      of fascinating results.
+      and therefore very relevant. Additionally, we think it might show a
+      variety of fascinating results.
 
       <h2>Related Work</h2>
       The interest in this topic came from the fact that Covid-19 is still
@@ -77,26 +77,27 @@
       topic should be abundant.
 
       <h2>Initial Questions</h2>
-      This report analyses a possible correlation between Coronavirus and the
-      unemployment rate, and if so, to what extent. Currently, as of writing
-      this report, there have been two waves of Covid-19 in Noway and three
-      in the USA. The first wave, for both countries, occurred in late
-      February/early March 2020. America's second outbreak occurred in
-      the summer, and Norway's second and America's third started in October
-      and is still going on.
+      This report will analyse if there is a possible correlation between the
+      Corona virus and unemployment rate, and if so, to what extent. Currently,
+      as of writing this report, there have been two waves of Covid-19 in Noway
+      and three in USA. The first wave, for both countries, occurred in late
+      February/early March 2020. America's second outbreak occurred in the
+      summer, and Norway's second and America's third outbreaks started in
+      October and is still ongoing.
 
       <h2>Data</h2>
       Since we have a variety of categories, we have used several sources that
       we will present below.
 
       <h3>Unemployment rate Norway</h3>
-      The data for the unemployment rate in Norway is retrieved from Nav.
-      Nav offers many great data sets, which can be found here:
+      The data for unemployment rate in Norway is retrieved from Nav. Nav offers
+      many great data sets, which can be found here:
       <a
         href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/"
       >
         nav.no
-      </a>.
+      </a>
+      .
       <br />
       <br />
       The specific data set we used for unemployment was:
@@ -104,52 +105,54 @@
         href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/hovedtall-om-arbeidsmarkedet/_/attachment/download/b4c655bf-de5c-4714-bf30-9d4d979fa45b:7e53be0947a6afdab3df01a0523a574d3e174277/HL100_Antall_helt_ledige_historisk._November_2020.xlsx"
       >
         Nav unemployment
-      </a>.
+      </a>
+      .
       <br />
       <br />
       The data set comes in excel format. To scrape it, we used the python
       library pandas:
-      <a href="https://pandas.pydata.org/">pandas.pydata.org</a>,
-      which supports reading excel formatted files.
+      <a href="https://pandas.pydata.org/">pandas.pydata.org</a>
+      , which supports reading excel formatted files.
 
       <h3>Unemployment rate USA</h3>
-      The unemployment rate data for the USA comes from the U.S Bureau of
-      Labor Statistics:
-      <a href="https://www.bls.gov">bls.gov</a>.
-      To retrieve the data, we do a post request to their API:
-      <a href="https://api.bls.gov/publicAPI">api.bls.gov</a>,
-      where we pass some parameters which specify what data we want. The result
-      comes in JSON format, and we use the JSON python module to iterate and
-      parse the data.
+      The unemployment rate data for USA comes from the U.S Bureau of Labor
+      Statistics:
+      <a href="https://www.bls.gov">bls.gov</a>
+      . To retrieve the data, we do a post request to their API:
+      <a href="https://api.bls.gov/publicAPI">api.bls.gov</a>
+      , where we pass some parameters which specify what data we want. The
+      result comes in JSON format, and we use the json python module to iterate
+      and parse the data.
 
       <h3>Covid cases</h3>
       The data for the number of daily Covid cases is fetched from the European
       Centre for Disease Prevention and Control:
-      <a href="https://www.ecdc.europa.eu/en">ecdc.europa.eu</a>.
-      They supply a variety of data sets involving Covid, amongst other things.
-      The data we use can be found here:
+      <a href="https://www.ecdc.europa.eu/en">ecdc.europa.eu</a>
+      . They supply a variety of data sets involving Covid, amongst other
+      things. The data we use can be found here:
       <a
         href="https://opendata.ecdc.europa.eu/covid19/casedistribution/csv/data.csv"
       >
         ecdc Covid
-      </a>.
-      The data is in CSV format, and we can parse the data by separating the
-      lines and then separating the rows by commas to extract the relevant values.
+      </a>
+      . The data is in CSV format, and we can parse the data by first separating
+      the lines, before separating the rows by commas to extract the relevant
+      values.
 
       <h2>Exploratory Analysis</h2>
       All the plots were made using python and plotly:
-      <a href="https://plotly.com/python/">plotly.com</a>.
-      Plotly is a library for creating interactive plots and graphs. The plots
+      <a href="https://plotly.com/python/">plotly.com</a>
+      . Plotly is a library for creating interactive plots and graphs. The plots
       can be interacted with by hovering over data points to see specific data
-      point values and zoom in on specific parts of the graph by selecting/dragging
-      the mouse over the graph. In each plot, there is also a toolbar with a
-      variety of tools.
+      point values, as well as zooming in on specific parts of the graph by
+      selecting/dragging the mouse over the graph. In each plot, there is also a
+      toolbar with a variety of tools.
 
       <div class="graph">
         <div class="plot" src="plots/unemployment.html"></div>
       </div>
       <small class="center">
-        (Figure 1. The unemployment rate for Norway and the USA)
+        (Figure 1. Unemployment rate for Norway and USA)
       </small>
       <br />
       Following the unemployment rate from 2015, we can see that it is slowly
@@ -161,31 +164,31 @@
       <small class="center">(Figure 2. Confirmed Covid cases in Norway)</small>
       <br />
       In Norway, we can see two significant waves of Covid, with the second wave
-      having the highest amount of cases so far. The second wave is still
-      on-going; however, it appears to be flattening out.
+      having the highest amount of cases so far. As of writing this, the second
+      wave is still on-going, however, it appears to be flattening out.
       <div class="graph">
         <div class="plot" src="plots/covid_usa.html"></div>
       </div>
-      <small class="center">(Figure 3. Confirmed Covid cases in the USA)</small>
+      <small class="center">(Figure 3. Confirmed Covid cases in USA)</small>
       <br />
-      In the USA,
+      In USA,
       <i>three</i>
       significant waves of Covid are identifiable, with the last having the
       highest amount of cases. Comparing this plot to the plot from Norway, we
-      can see that Norway controlled the outbreak a lot better during the summer,
-      barely having any cases.
+      can see that Norway controlled the outbreak a lot better during the
+      summer, barely having any cases.
 
       <h2>Final Analysis</h2>
       Based on the data, there appears to be a correlation between the number of
-      Covid cases and the unemployment rate. From the figures, we can see that
-      as soon as the number of Covid cases increased and lockdowns were enforced,
+      Covid cases and unemployment rate. From the figures, we can see that as
+      soon as the number of Covid cases increased, and lockdowns were enforced,
       the unemployment rate also increased. For the Norwegian unemployment data
-      (figure 1), the plot illustrates an increase in the unemployment rate
-      before the lockdown. However, this is because both the lockdown and
+      (figure 1), the plot appears to illustrate an increase in the unemployment
+      rate before the lockdown, however, this is because both the lockdown and
       unemployment-peak were in the same month. In actuality, the unemployment
-      rate followed the lockdown. Interestingly, in the next waves of Covid, no
-      noticeable difference in unemployment was detected. We suspect this is the
-      case for two main reasons:
+      rate followed the lockdown. Interestingly, in the following waves of
+      Covid, no noticeable difference in unemployment was detected. We suspect
+      this is the case for two main reasons:
 
       <ul>
         <li>
@@ -194,13 +197,13 @@
         </li>
         <li>
           No lockdowns have been enforced in the second (and third in the case
-          of the USA) wave.
+          of USA) wave.
         </li>
       </ul>
 
       At the time of writing, no second lockdown has been enforced. If a second
       lockdown were to be enforced, we would expect to see an increase in
-      unemployment, again, but not as severe as the first.
+      unemployment again, however not as severe as the first.
     </div>
   </body>
 </html>
