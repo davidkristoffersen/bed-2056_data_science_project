@@ -1,4 +1,7 @@
-# bed-2056_data_science_project :shipit:
+# BED-2056 Data Science Project :shipit:
 
-## Requirements
-* [Assignment text](https://docs.google.com/document/d/e/2PACX-1vSWQUDdCrCa7o_NoN_nPnBfOvjnPsIGnvXS-hwWbDwkYjZghOWPTc0XzVFBt3YqJDxsNpfFdWsBy0Pn/pub)
+## Report
+The project report can be viewed here: [report](https://htmlpreview.github.io/?https://raw.githubusercontent.com/davidkristoffersen/bed-2056_data_science_project/master/src/document.html?token=AKHCGBMYRNVS4CEAMZZQKXK72NGTQ)
+
+## Screencast
+A screencast presenting the project can be viewed here: \<insert-url-here\>
