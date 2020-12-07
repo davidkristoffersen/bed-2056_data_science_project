@@ -62,7 +62,7 @@
       reported an increase in unemployment. This report will investigate these
       claims and figure out if there is a correlation between Coronavirus and
       unemployment. For simplicity's sake, we will focus on data from Norway and
-      USA. We believe the majority of countries will have similar patterns.
+      the USA. We believe the majority of countries will have similar patterns.
       <br />
       <br />
       We chose to focus on this topic because the pandemic is still on-going,
@@ -77,20 +77,20 @@
       topic should be abundant.
 
       <h2>Initial Questions</h2>
-      This report will analyse if there is a possible correlation between the
-      Corona virus and unemployment rate, and if so, to what extent. Currently,
+      This report will analyze if there is a possible correlation between the
+      Coronavirus and the unemployment rate, and if so, to what extent. Currently,
       as of writing this report, there have been two waves of Covid-19 in Noway
-      and three in USA. The first wave, for both countries, occurred in late
+      and three in the USA. The first wave, for both countries, occurred in late
       February/early March 2020. America's second outbreak occurred in the
       summer, and Norway's second and America's third outbreaks started in
-      October and is still ongoing.
+      October and are still on-going.
 
       <h2>Data</h2>
       Since we have a variety of categories, we have used several sources that
       we will present below.
 
       <h3>Unemployment rate Norway</h3>
-      The data for unemployment rate in Norway is retrieved from Nav. Nav offers
+      The data for the unemployment rate in Norway is retrieved from Nav. Nav offers
       many great data sets, which can be found here:
       <a
         href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/"
@@ -115,7 +115,7 @@
       , which supports reading excel formatted files.
 
       <h3>Unemployment rate USA</h3>
-      The unemployment rate data for USA comes from the U.S Bureau of Labor
+      The unemployment rate data for the USA comes from the U.S Bureau of Labor
       Statistics:
       <a href="https://www.bls.gov">bls.gov</a>
       . To retrieve the data, we do a post request to their API:
@@ -136,7 +136,7 @@
         ecdc Covid
       </a>
       . The data is in CSV format, and we can parse the data by first separating
-      the lines, before separating the rows by commas to extract the relevant
+      the lines before separating the rows by commas to extract the relevant
       values.
 
       <h2>Exploratory Analysis</h2>
@@ -152,7 +152,7 @@
         <div class="plot" src="plots/unemployment.html"></div>
       </div>
       <small class="center">
-        (Figure 1. Unemployment rate for Norway and USA)
+        (Figure 1. Unemployment rate for Norway and the USA)
       </small>
       <br />
       Following the unemployment rate from 2015, we can see that it is slowly
@@ -169,9 +169,9 @@
       <div class="graph">
         <div class="plot" src="plots/covid_usa.html"></div>
       </div>
-      <small class="center">(Figure 3. Confirmed Covid cases in USA)</small>
+      <small class="center">(Figure 3. Confirmed Covid cases in the USA)</small>
       <br />
-      In USA,
+      In the USA,
       <i>three</i>
       significant waves of Covid are identifiable, with the last having the
       highest amount of cases. Comparing this plot to the plot from Norway, we
@@ -180,11 +180,11 @@
 
       <h2>Final Analysis</h2>
       Based on the data, there appears to be a correlation between the number of
-      Covid cases and unemployment rate. From the figures, we can see that as
+      Covid cases and the unemployment rate. From the figures, we can see that as
       soon as the number of Covid cases increased, and lockdowns were enforced,
       the unemployment rate also increased. For the Norwegian unemployment data
       (figure 1), the plot appears to illustrate an increase in the unemployment
-      rate before the lockdown, however, this is because both the lockdown and
+      rate before the lockdown. However, this is because both the lockdown and
       unemployment-peak were in the same month. In actuality, the unemployment
       rate followed the lockdown. Interestingly, in the following waves of
       Covid, no noticeable difference in unemployment was detected. We suspect
@@ -197,7 +197,7 @@
         </li>
         <li>
           No lockdowns have been enforced in the second (and third in the case
-          of USA) wave.
+          of the USA) wave.
         </li>
       </ul>
 
