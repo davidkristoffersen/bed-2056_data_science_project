@@ -1,5 +1,7 @@
 import math
+import json
 import pandas
+import requests
 import urllib.request
 
 
@@ -17,6 +19,15 @@ idx_to_month = {
     11: "Nov",
     12: "Dec",
 }
+
+
+def get_norway_population():
+    """
+        Gets the current population of Norway from https://restcountries.eu/
+    """
+
+    response = requests.get("https://restcountries.eu/rest/v2/alpha/nor")
+    return json.loads(response.text)["population"]
 
 
 def get_norway():

@@ -2,6 +2,15 @@ import json
 import requests
 
 
+def get_usa_population():
+    """
+        Gets the current population of USA from https://restcountries.eu/
+    """
+
+    response = requests.get("https://restcountries.eu/rest/v2/alpha/usa")
+    return json.loads(response.text)["population"]
+
+
 def get_usa():
     """
         Reads the unemployment data from U.S. Bureau of Labour Statistics, and parses it into a better format.
