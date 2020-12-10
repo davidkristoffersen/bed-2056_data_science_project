@@ -20,6 +20,11 @@ A screencast presenting the project can be viewed here: [youtube](https://youtu.
 - requests
 - beautifulsoup4
 
+**Install all pip packages:**  
+```bash
+$ pip3 install plotly pandas requests beautifulsoup4
+```
+
 ### How to run
 
 ```bash
