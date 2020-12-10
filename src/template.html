@@ -55,9 +55,6 @@
       <br />
       Markus Bergum Hilbertsen
 
-      <h2>Demo</h2>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/5JibqtTGYT8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
       <h2>Overview and Motivation</h2>
       In late 2019 and early 2020, the Coronavirus, originating from China,
       spread worldwide. Many nations enforced nationwide lockdowns in an attempt
@@ -65,7 +62,7 @@
       reported an increase in unemployment. This report will investigate these
       claims and figure out if there is a correlation between Coronavirus and
       unemployment. For simplicity's sake, we will focus on data from Norway and
-      the USA. We believe the majority of countries will have similar patterns.
+      USA. We believe the majority of countries will have similar patterns.
       <br />
       <br />
       We chose to focus on this topic because the pandemic is still on-going,
@@ -81,20 +78,20 @@
 
       <h2>Initial Questions</h2>
       This report will analyze if there is a possible correlation between the
-      Coronavirus and the unemployment rate, and if so, to what extent. Currently,
-      as of writing this report, there have been two waves of Covid-19 in Noway
-      and three in the USA. The first wave, for both countries, occurred in late
-      February/early March 2020. America's second outbreak occurred in the
-      summer, and Norway's second and America's third outbreaks started in
-      October and are still on-going.
+      Coronavirus and the unemployment rate, and if so, to what extent.
+      Currently, as of writing this report, there have been two waves of
+      Covid-19 in Noway and three in the USA. The first wave, for both
+      countries, occurred in late February/early March 2020. America's second
+      outbreak occurred in the summer, and Norway's second and America's third
+      outbreaks started in October and are still on-going.
 
       <h2>Data</h2>
       Since we have a variety of categories, we have used several sources that
       we will present below.
 
       <h3>Unemployment rate Norway</h3>
-      The data for the unemployment rate in Norway is retrieved from Nav. Nav offers
-      many great data sets, which can be found here:
+      The data for the unemployment rate in Norway is retrieved from Nav. Nav
+      offers many great data sets, which can be found here:
       <a
         href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/"
       >
@@ -152,19 +149,9 @@
       toolbar with a variety of tools.
 
       <div class="graph">
-        <div class="plot" src="plots/unemployment.html"></div>
-      </div>
-      <small class="center">
-        (Figure 1. Unemployment rate for Norway and the USA)
-      </small>
-      <br />
-      Following the unemployment rate from 2015, we can see that it is slowly
-      decreasing until the lockdown events in March 2020.
-
-      <div class="graph">
         <div class="plot" src="plots/covid_norway.html"></div>
       </div>
-      <small class="center">(Figure 2. Confirmed Covid cases in Norway)</small>
+      <small class="center">(Figure 1. Confirmed Covid cases in Norway)</small>
       <br />
       In Norway, we can see two significant waves of Covid, with the second wave
       having the highest amount of cases so far. As of writing this, the second
@@ -172,7 +159,7 @@
       <div class="graph">
         <div class="plot" src="plots/covid_usa.html"></div>
       </div>
-      <small class="center">(Figure 3. Confirmed Covid cases in the USA)</small>
+      <small class="center">(Figure 2. Confirmed Covid cases in the USA)</small>
       <br />
       In the USA,
       <i>three</i>
@@ -181,17 +168,61 @@
       can see that Norway controlled the outbreak a lot better during the
       summer, barely having any cases.
 
+      <div class="graph">
+        <div class="plot" src="plots/relative_covid.html"></div>
+      </div>
+      <small class="center">
+        (Figure 3. Confirmed Covid cases in Norway and UAS per 100 000 citizen)
+      </small>
+      <br />
+      In the plot, we can see that both countries had a similar amount of
+      confirmed covid cases in March. However, around 28 of March, Norway's
+      Covid cases started declining, while USA's continued to increase. As
+      previously mentioned, USA was not able to contain the spread in the
+      summer, while Norway contained it very well. Both countries had a new wave
+      in October, and from the plot we see that Norway contained it better by
+      around over 20%.
+
+      <div class="graph">
+        <div class="plot" src="plots/unemployment.html"></div>
+      </div>
+      <small class="center">
+        (Figure 4. Unemployment rate for Norway and the USA)
+      </small>
+      <br />
+      Following the unemployment rate from 2015, we can see that it is slowly
+      decreasing until the lockdown events in March 2020.
+
+      <div class="graph">
+        <div class="plot" src="plots/relative_unemployment.html"></div>
+      </div>
+      <small class="center">
+        (Figure 5. Difference in unemployment rate between Norway and USA)
+      </small>
+      <br />
+      The plot show that the relative unemployment was slowly declining until
+      the lockdowns, where it drastically dropped, and then increased. Since
+      Norway's lockdown happend earlier, USA had 5% less unemployment for a
+      short period, until their lockdown occured. After the inital lockdown,
+      although the relative graph is sinking, the relative difference have
+      increased.
+
       <h2>Final Analysis</h2>
       Based on the data, there appears to be a correlation between the number of
-      Covid cases and the unemployment rate. From the figures, we can see that as
-      soon as the number of Covid cases increased, and lockdowns were enforced,
-      the unemployment rate also increased. For the Norwegian unemployment data
-      (figure 1), the plot appears to illustrate an increase in the unemployment
-      rate before the lockdown. However, this is because both the lockdown and
-      unemployment-peak were in the same month. In actuality, the unemployment
-      rate followed the lockdown. Interestingly, in the following waves of
-      Covid, no noticeable difference in unemployment was detected. We suspect
-      this is the case for two main reasons:
+      Covid cases and the unemployment rate. Looking at the plot for confirmed
+      cases of Covid-19, we can see that when the covid cases increased and
+      lockdowns were enforced, the unemployment also increased. Additionally,
+      comparing the relative Covid cases graph (figure 4) and the relative
+      unemployment graph (figure 5), we can see that USA had more confirmed
+      cases, as well as higher unemployment rate. This leads us to believe there
+      is a correlation between the number of Covid cases and the unemployment
+      rate.
+      <br />
+      <br />
+
+      Interestingly, in the following waves of Covid, no noticeable rise in
+      unemployment was detected. We suspect this is the case for two main
+      reasons:
 
       <ul>
         <li>
@@ -207,6 +238,16 @@
       At the time of writing, no second lockdown has been enforced. If a second
       lockdown were to be enforced, we would expect to see an increase in
       unemployment again, however not as severe as the first.
+
+      <h2>Demo</h2>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/5JibqtTGYT8"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
     </div>
   </body>
 </html>
