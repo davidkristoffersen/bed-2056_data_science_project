@@ -23,6 +23,8 @@ def update_template(graph):
         f.write(soup.prettify())
 
 if __name__ == "__main__":
-    update_template("unemployment")
     update_template("covid_norway")
     update_template("covid_usa")
+    update_template("relative_covid")
+    update_template("unemployment")
+    update_template("relative_unemployment")
