@@ -39,6 +39,10 @@
         text-align: center;
       }
 
+      .figure-text {
+        margin-bottom: 1rem;
+      }
+
       .graph {
         margin: 2rem auto 2rem auto;
       }
@@ -78,12 +82,12 @@
 
       <h2>Initial Questions</h2>
       This report will analyze if there is a possible correlation between the
-      Coronavirus and the unemployment rate, and if so, to what extent.
-      Currently, as of writing this report, there have been two waves of
-      Covid-19 in Noway and three in the USA. The first wave, for both
-      countries, occurred in late February/early March 2020. America's second
-      outbreak occurred in the summer, and Norway's second and America's third
-      outbreaks started in October and are still on-going.
+      Coronavirus and unemployment rate, and if so, to what extent. Currently,
+      as of writing this report, there have been two waves of Covid-19 in Noway
+      and three in USA. The first wave, for both countries, occurred in late
+      February/early March 2020. USA's second outbreak occurred in the summer,
+      and Norway's second and USA's third outbreaks started in October and are
+      still on-going.
 
       <h2>Data</h2>
       Since we have a variety of categories, we have used several sources that
@@ -115,14 +119,14 @@
       , which supports reading excel formatted files.
 
       <h3>Unemployment rate USA</h3>
-      The unemployment rate data for the USA comes from the U.S Bureau of Labor
+      The unemployment rate data for USA comes from the U.S Bureau of Labor
       Statistics:
       <a href="https://www.bls.gov">bls.gov</a>
       . To retrieve the data, we do a post request to their API:
       <a href="https://api.bls.gov/publicAPI">api.bls.gov</a>
       , where we pass some parameters which specify what data we want. The
-      result comes in JSON format, and we use the json python module to iterate
-      and parse the data.
+      result comes in JSON format, and we use the json module for python to
+      parse the data and extract the relevant information.
 
       <h3>Covid cases</h3>
       The data for the number of daily Covid cases is fetched from the European
@@ -136,8 +140,8 @@
         ecdc Covid
       </a>
       . The data is in CSV format, and we can parse the data by first separating
-      the lines before separating the rows by commas to extract the relevant
-      values.
+      the lines, before separating the rows by commas to extract the values for
+      Norway and USA.
 
       <h2>Exploratory Analysis</h2>
       All the plots were made using python and plotly:
@@ -151,72 +155,84 @@
       <div class="graph">
         <div class="plot" src="plots/covid_norway.html"></div>
       </div>
-      <small class="center">(Figure 1. Confirmed Covid cases in Norway)</small>
-      <br />
-      In Norway, we can see two significant waves of Covid, with the second wave
-      having the highest amount of cases so far. As of writing this, the second
-      wave is still on-going, however, it appears to be flattening out.
+      <small class="figure-text">
+        (Figure 1. Confirmed Covid cases in Norway)
+      </small>
+      <p>
+        In Norway, we can see two significant waves of Covid, with the second
+        wave having the highest amount of cases so far. As of writing this, the
+        second wave is still on-going, however, it appears to be flattening out.
+      </p>
       <div class="graph">
         <div class="plot" src="plots/covid_usa.html"></div>
       </div>
-      <small class="center">(Figure 2. Confirmed Covid cases in the USA)</small>
-      <br />
-      In the USA,
-      <i>three</i>
-      significant waves of Covid are identifiable, with the last having the
-      highest amount of cases. Comparing this plot to the plot from Norway, we
-      can see that Norway controlled the outbreak a lot better during the
-      summer, barely having any cases.
+      <small class="figure-text">
+        (Figure 2. Confirmed Covid cases in USA)
+      </small>
+      <p>
+        In USA,
+        <i>three</i>
+        significant waves of Covid are identifiable, where the last wave has the
+        highest amount of cases and is still on-going (as of writing this).
+        Comparing this plot to the plot from Norway, we can see that Norway
+        controlled the outbreak a lot better during the summer, barely having
+        any cases.
+      </p>
 
       <div class="graph">
         <div class="plot" src="plots/relative_covid.html"></div>
       </div>
-      <small class="center">
+      <small class="figure-text">
         (Figure 3. Confirmed Covid cases in Norway and UAS per 100 000 citizen)
       </small>
-      <br />
-      In the plot, we can see that both countries had a similar amount of
-      confirmed covid cases in March. However, around 28 of March, Norway's
-      Covid cases started declining, while USA's continued to increase. As
-      previously mentioned, USA was not able to contain the spread in the
-      summer, while Norway contained it very well. Both countries had a new wave
-      in October, and from the plot we see that Norway contained it better by
-      around over 20%.
+      <p>
+        In this plot, we can see that both countries had a similar amount of
+        confirmed covid cases in March. However, around the 28th of March 2020,
+        Norway's Covid cases started declining, while USA's continued to
+        increase. As previously mentioned, USA was not able to contain the
+        spread during the summer, while Norway contained it very well. Both
+        countries had a new wave in October, and from the plot we see that
+        Norway contained it better by around 20%.
+      </p>
 
       <div class="graph">
         <div class="plot" src="plots/unemployment.html"></div>
       </div>
-      <small class="center">
-        (Figure 4. Unemployment rate for Norway and the USA)
+      <small class="figure-text">
+        (Figure 4. Unemployment rate for Norway and USA)
       </small>
-      <br />
-      Following the unemployment rate from 2015, we can see that it is slowly
-      decreasing until the lockdown events in March 2020.
+      <p>
+        Following the unemployment rate from 2015, we can see that it is slowly
+        decreasing until the lockdown events in March 2020.
+      </p>
 
       <div class="graph">
         <div class="plot" src="plots/relative_unemployment.html"></div>
       </div>
-      <small class="center">
+      <small class="figure-text">
         (Figure 5. Difference in unemployment rate between Norway and USA)
       </small>
-      <br />
-      The plot show that the relative unemployment was slowly declining until
-      the lockdowns, where it drastically dropped, and then increased. Since
-      Norway's lockdown happend earlier, USA had 5% less unemployment for a
-      short period, until their lockdown occured. After the inital lockdown,
-      although the relative graph is sinking, the relative difference have
-      increased.
+      <p>
+        This plot shows that the difference in unemployment between USA and
+        Norway was steadily decreasing in the years prior to Covid-19. Since the
+        lockdown in Norway was enforced earlier than USA we see the difference
+        go into the negative, meaning Norway had a higher unemployment rate than
+        USA. However, as soon as USA enforced their lockdown the graph went back
+        up to USA having a significantly higher unemployment rate. Since the
+        inital lockdowns the difference has been decreasing, however it is still
+        significantly higher than what it was prior to Covid-19.
+      </p>
 
       <h2>Final Analysis</h2>
       Based on the data, there appears to be a correlation between the number of
-      Covid cases and the unemployment rate. Looking at the plot for confirmed
-      cases of Covid-19, we can see that when the covid cases increased and
-      lockdowns were enforced, the unemployment also increased. Additionally,
-      comparing the relative Covid cases graph (figure 4) and the relative
-      unemployment graph (figure 5), we can see that USA had more confirmed
-      cases, as well as higher unemployment rate. This leads us to believe there
-      is a correlation between the number of Covid cases and the unemployment
-      rate.
+      Covid cases and unemployment rate. Looking at the plot for confirmed cases
+      of Covid-19, we can see that when the covid cases increased and lockdowns
+      were enforced, the unemployment also increased. Additionally, comparing
+      the relative Covid cases graph (figure 4) and the relative unemployment
+      graph (figure 5), we can see that USA had more confirmed cases, as well as
+      higher unemployment rate, compared to Norway. This leads us to believe
+      that there is a correlation between the number of Covid cases and the
+      unemployment rate.
       <br />
       <br />
 
@@ -231,15 +247,15 @@
         </li>
         <li>
           No lockdowns have been enforced in the second (and third in the case
-          of the USA) wave.
+          of USA) wave.
         </li>
       </ul>
 
-      At the time of writing, no second lockdown has been enforced. If a second
-      lockdown were to be enforced, we would expect to see an increase in
+      At the time of writing this, no second lockdown has been enforced. If a
+      second lockdown were to be enforced, we would expect to see an increase in
       unemployment again, however not as severe as the first.
 
-      <h2>Demo</h2>
+      <h2>Screencast</h2>
       <iframe
         width="560"
         height="315"
